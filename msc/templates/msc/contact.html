@@ -1,0 +1,30 @@
+{% extends 'msc/basic.html' %}
+
+{% block title %} Contact Us {% endblock %}
+{% block body %} 
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6 fw-bold">
+            <h1>Contact Me!</h1>
+            <form action="/shop/contact/" method="post">{% csrf_token %}
+                Your Name <br>
+                <input name="name" class="mb-3" type="text" style="width: 100%;" placeholder="Enter Your Name...">
+
+                Your Email <br>
+                <input name="email" class="mb-3" type="email" style="width: 100%;" placeholder="Enter Your Email...">
+
+                Your PhoneNumber <br>
+                <input name="phno" class="mb-3" type="number" style="width: 100%;" placeholder="Enter Your PhoneNumber...">
+
+                Your Message <br>
+                <textarea name="des" class="mb-3" type="text" style="width: 100%;" placeholder="Enter Your Message..."></textarea>
+
+                <button type="submit">Submit!</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

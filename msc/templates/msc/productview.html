@@ -1,0 +1,50 @@
+{% extends 'msc/basic.html' %}
+{% block title %} {{product.product_name}} - My Shopping Center {% endblock %}
+
+{% block body %} 
+
+<div class="container-fluid text-ligt">
+    <div class="row bg-da">
+        <div class="col-md-4"><img src="/media/{{product.image}}" style="width: 300px; height: 400px;" alt=""></div>
+        <div class="col-md-8">
+            <h1>{{product.product_name}}</h1>
+            <span><b>RS. {{product.price}}</b></span>
+            <p>{{product.product_des}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+    <script>
+        
+        console.log('Usman Arif');
+        // localStorage.setItem('usman','basheer')
+        if (localStorage.getItem('cart') == null){
+            var cart = {};
+        }
+        else{
+            cart = JSON.parse(localStorage.getItem('cart'));
+            document.getElementById('cart').innerHTML = Object.keys(cart).length;
+        }
+        $('.cart').click(function() {
+            // console.log('clicked');
+            var id = this.id.toString();
+            // console.log(id);
+            if (cart[id] != undefined){
+                cart[id] = cart[id] + 1;
+            }
+            else{
+                cart[id] = 1;
+            }
+            console.log(cart);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+        });
+
+        $('#popcart').popover();
+        document.getElementById('popcart').setAttribute('data-content', '<span>Usman Arif is from Nakyal Kotli Azad Kashmir.</span>');
+    </script>
+    {% endblock %}
