@@ -160,7 +160,7 @@
         </div>
     </div>
 
-    <a class="carousel-control-prev " href="#demo" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only"></span>
     </a>
@@ -186,7 +186,8 @@
         }
 
 
-        $('.cart').click(function() {
+        // $('.cart').click(function() {
+        $('.divpr').on('click', 'button.cart', function() {
             // console.log('clicked');
             var id = this.id.toString();
             // console.log(id);
@@ -217,14 +218,15 @@
             // <button id = "checkout" class = "btn btn-primary">CheckOut</button>
             // <button id = "clearcart" class = "btn btn-primary" onclick = "clearcart()">Clear Cart</button>
             //  <a href = "/shop/checkout"></a>
-            popstr = popstr + '</div> <a href="/shop/checkout" class="btn btn-primary">CheckOut</a> <a id = "clearcart" class = "btn btn-primary" type="button">Clear Cart</a>'
+            popstr = popstr + '</div> <a href="/shop/checkout" class="btn btn-primary">CheckOut</a> <a type="button" id = "clearcart" class = "btn btn-primary" type="button">Clear Cart</a>'
             document.getElementById('popcart').setAttribute('data-content', popstr);
             $('#popcart').popover('show');
         } 
-        // document.getElementById('clearcart').onclick(clearcart());
-            
+        $('#clearcart').click(()=>{
+            clearcart();
+        });
+
         function clearcart() {
-            alert('hiiiiii');
             cart = JSON.parse(localStorage.getItem('cart'));
             for (var item in cart){
                 document.getElementById('div'+ item).innerHTML = '<button id="pr'+ item +'" class="btn btn-primary cart">Add to cart</button>'
